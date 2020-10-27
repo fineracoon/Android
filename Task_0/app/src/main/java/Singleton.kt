@@ -9,7 +9,7 @@ class Singleton {
     }
     private lateinit var value: String
 
-    public fun getInstance(): Singleton
+    fun getInstance(): Singleton
     {
         if (instance == null)
             instance = Singleton()
@@ -23,12 +23,12 @@ class Singleton {
         return true
     }
 
-    public fun PutString(str: String?)
+    fun PutString(str: String?)
     {
         value = str.toString()
     }
 
-    public fun GetString(): String
+    fun GetString(): String
     {
         return value
     }

@@ -23,22 +23,20 @@ class SecondActiviry : AppCompatActivity() {
         val tv: TextView = findViewById(R.id.textView)
         val btnBack: Button = findViewById(R.id.button4)
 
-        var bundle: Bundle
+        var bundle: Bundle? = intent.extras
 
         sp = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         if (sp.contains(SAVED_STRING))
         {
             tv.text = sp.getString(SAVED_STRING, "")
         }
-        else if (Singleton.instance.InstanceExists())
+        else if (bundle != null && bundle.containsKey("thestring"))
+        {
+            tv.text = bundle.get("thestring").toString()
+        }
+        else
         {
             tv.text = Singleton.instance.GetString()
-        }
-        else {
-            bundle = getIntent().getExtras()!!
-            if (bundle != null) {
-                tv.text = bundle.get("thestring").toString()
-            }
         }
 
         btnBack.setOnClickListener {
@@ -47,16 +45,15 @@ class SecondActiviry : AppCompatActivity() {
                 sp.edit().clear().apply()
                 finish()
             }
-            else if (Singleton.instance.InstanceExists())
+            else if (bundle != null && bundle.containsKey("thestring"))
             {
-                Toast.makeText(this, "singleton exists", Toast.LENGTH_LONG).show()
-                //Singleton.instance = null
+                bundle.remove("thestring")
                 finish()
             }
             else
             {
-                bundle = getIntent().getExtras()!!
-                bundle.remove("thestring")
+                Toast.makeText(this, "singleton exists", Toast.LENGTH_LONG).show()
+                //Singleton.instance = null
                 finish()
             }
         }
