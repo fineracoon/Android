@@ -9,6 +9,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.example.task_0.com.example.task_0.SingletonObject
 
 class SecondActiviry : AppCompatActivity() {
     lateinit var sp: SharedPreferences
@@ -20,7 +23,7 @@ class SecondActiviry : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_activiry)
 
-        val tv: TextView = findViewById(R.id.textView)
+        /*val tv: TextView = findViewById(R.id.textView)
         val btnBack: Button = findViewById(R.id.button4)
 
         var bundle: Bundle? = intent.extras
@@ -36,7 +39,7 @@ class SecondActiviry : AppCompatActivity() {
         }
         else
         {
-            tv.text = Singleton.instance.GetString()
+            tv.text = SingletonObject.instance.value //Singleton.instance.GetString()
         }
 
         btnBack.setOnClickListener {
@@ -53,9 +56,8 @@ class SecondActiviry : AppCompatActivity() {
             else
             {
                 Toast.makeText(this, "singleton exists", Toast.LENGTH_LONG).show()
-                //Singleton.instance = null
                 finish()
             }
-        }
+        }*/
     }
 }
